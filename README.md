@@ -1,2 +1,3 @@
-# CS460
-https://bu-disc.github.io/CS460/
+# CS660
+Fall 2023 offering
+https://bu-disc.github.io/CS660/
