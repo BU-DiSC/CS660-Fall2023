@@ -1,0 +1,70 @@
+Lab4 mini project
+
+You will be asked to answer the following queries:
+
+-- Query 1
+   Select the first and last name of every manager and the name of the department they manage
+
+-- Query 2
+   Find the average salary of all employees in the department called 'Research'
+
+-- Query 3
+   Find the name and number of employees for all departments with more than 50,000 employees
+
+###############################################################################################
+
+
+
+1. First connect to the Database by following the steps:
+
+
+	- Open Terminal(macOS, Linux) or Download PuTTY https://www.putty.org for Windows
+
+	-Connect to csa1 via ssh:
+		ssh your_BU_name@csa1.bu.edu
+
+	-Enter your BU Kerberos password
+
+	-Connect to the MySQL database by typing the following command:
+		mysql -u cs460 -p -h cs-db.bu.edu -D cs460 -Enter password: Q3Y6kFd25k9ac8V5
+
+	-Type the command: ‘use cs460’
+
+
+
+2. Create three files with this command:
+
+	touch query1.sql query2.sql query3.sql
+
+
+3. You can test your queries however you want in an interactive MySQL session, or by writing them in the files(more details below) you created and executing them like this:
+
+	mysql -u cs460 -p -h cs-db.bu.edu -t -D cs460 < query1.sql
+	and then typing the password: Q3Y6kFd25k9ac8V5
+
+	(The -t flag prints results in table format.)
+
+	To write to the files you created just type "vim NAME_OF_FILE" in terminal. Make the changes and then follow the on screen instructions to save.
+
+ 
+4. When you're satisfied with a query, save its output to a .out file like this:
+
+	mysql -u cs460 -p -h cs-db.bu.edu -t -D cs460 < query1.sql > query1.out
+	and then typing the password: Q3Y6kFd25k9ac8V5
+
+
+ 
+5. To submit your queries at the end of the session, run this commands:
+
+	gsubmit cs460 query1.out
+
+	gsubmit cs460 query2.out
+
+	gsubmit cs460 query3.out
+
+
+6. To confirm that you submitted the file, run the command:
+
+	gsubmit cs460 -ls
+
+	It should display the filed you submitted with a timestamp.

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/5f2367067a73ee180152f3b2/1596846324894-78AGU9BEUCC84Z5V2DB6/ke17ZwdGBToddI8pDm48kAhLxogoXycGtSbZQT4CknZZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpyO_696MuuT7lJ7UjWki0-X2-exVEe5nv3o9DIf3qhJEYwRJipR68HoWdNEcsftf14/favicon.ico?format=100w"/>
+
+    <title>CAS CS 460 - Introduction to Database Systems @ BU</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <!-- <link href="css/clean-blog.min.css" rel="stylesheet"> -->
+    <link href="css/clean-blog.css?ver=312" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/main.css?ver=632" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <script type="text/javascript"> 
+      function classDay(d){ 
+        // var dates = ["January 23","January 25","January 30","February 1","February 6","February 8","February 13","February 15","February 22","February 23 (Thursday)","February 27","March 1","March 6","March 8","March 13","March 15","March 27","March 29","April 3","April 5","April 10","April 12","April 19","April 24","April 26","May 1"]                
+                
+        var dates = ["September 2","September 7","September 9","September 14","September 16","September 21","September 23","September 28","September 30","October 5","October 7","October 14","October 19","October 21","October 26","October 28","November 2","November 4","November 9","November 11","November 16","November 18","November 23","November 30","December 2","December 7","December 9"]
+        if (d>=0 && d<28)
+          return dates[d];
+        else 
+          return "TBA";
+       } 
+       var cday=0;
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">CS460</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="labs.html">Labs</a>
+                    </li>    
+                    <li>
+                        <a href="project.html">Programming Assignments</a>
+                    </li>
+                    <li>
+                        <a href="homeworks.html">Written Assignments</a>
+                    </li>
+                    <li>
+                        <a href="syllabus.html">Syllabus</a>
+                    </li>
+                    <li>
+                        <a href="https://tinyurl.com/CS460-F21-Notes" target="_blank">Notes</a>
+                    </li>
+                    <li>
+                        <a href="https://piazza.com/bu/fall2021/cs460" target="_blank">Piazza</a>
+                    </li>
+                    <li>
+                        <a href="https://www.gradescope.com/courses/296086" target="_blank">Gradescope</a>
+                    </li>                   
+                    <li>
+                        <a href="https://disc.bu.edu/" target="_blank">DiSC lab</a>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <!-- <header class="intro-header" style="background-image: url('img/home-bg.jpg')"> -->
+    <header class="intro-header" style="background-color: #af2b2b">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-lg-offset-0 col-md-10 col-md-offset-0"">
+                    <div class="site-heading">
+                        <h1>CAS CS 460</h1>
+                        <h2>Introduction to Database Systems</h2>
+                        <hr class="small">
+                        <!-- <span class="subheading">Understanding the internals of database systems</span> -->
+                <p class="text-center" style="margin-bottom:-0.5cm;">
+                    <a class="btn btn-xl" style="background-color: #a83333;" href="syllabus.html">Syllabus</a>&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-xl" style="background-color: #a83333;" href="homeworks.html">Homeworks</a>&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-xl" style="background-color: #a83333;" href="project.html">Projects</a>&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-xl" style="background-color: #a83333;" href="labs.html">Labs</a>&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-xl" style="background-color: #a83333;" href="#announcements">Announcements</a>
+                </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content" id="first">
+
+
+    <!-- <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="alert alert-danger text-center" role="alert" style="margin-top:-0.25cm;">
+                <p><strong>Note: </strong> The material of the website is currently updated. Please visit periodically to monitor updates as the beginning of the semester approaches.
+                </p>
+            </div>
+        </div>
+    </div>  -->
+
+    <!-- <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="alert alert-success text-center" role="alert">
+                <p> If you are a student of CS 460, please complete the <a href="https://forms.gle/3uNWeBnZfN6TiVoB7" target="_blank">CS460 LfA Attendance Survey</a>. 
+                </p>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="alert alert-warning text-center" role="alert">
+                <p> If you are interested to enroll to CS460 and the class is currently full, please enroll in the waiting list: <a href="http://www.bu.edu/cs/undergraduate/undergraduate-life/courses/cs-waitlists/" target="_blank">here</a>. 
+                </p>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Main Content -->
+    <div class="" id="first">
+        <div class="row">
+        	<div class="col-lg-12 col-md-12">
+        		<h1 class="text-center">Class at a Glance</h1>
+        	</div>
+			
+			<div class="col-lg-6 col-md-6 text-center">
+				<p>Class: Tue/Thu 2:00-3:15pm, <a href="http://www.bu.edu/classrooms/classroom/har-208/" target="_blank">HAR 208</a>
+				<br>
+				Instructor: <a href="http://cs-people.bu.edu/mathan" target="_blank">Manos Athanassoulis</a>&nbsp;<a href="mailto:mathan@bu.edu?subject=[CS460]"><i class="fa fa-envelope"></i></a>
+                <!-- <a href="https://piazza.com/class/ke4bdqqqrnl5hp?cid=15" target="_blank">Class recordings</a> -->
+                <br>
+                <br> Manos OH: 3:30pm-4:30pm (after class)
+                <br> Manos OH Location: <a href="https://piazza.com/class/ke4bdqqqrnl5hp?cid=8" target="_blank">MCS 106</a> 
+                </p>
+			</div>
+			<div class="col-lg-6 col-md-6 text-center">
+				<p> Labs: Tue 9:30-10:20am / 11:15am-12:05pm / 12:30-1:20pm, <a href="https://www.bu.edu/classrooms/classroom/mcs-b33/" target="_blank">MCS B33</a> / <a href="https://www.bu.edu/classrooms/classroom/mcs-b29/" target="_blank">MCS B29</a>/ <a href="https://www.bu.edu/classrooms/classroom/kcb-107/" target="_blank">KCB 107</a><br>
+                TFs: <a href="ramananeesh.github.io/" target="_blank">Aneesh Raman</a>   <a href="mailto:aneeshr@bu.edu?subject=[CS460]"><i class="fa fa-envelope"></i></a>, &nbsp;
+                <a href="https://cs-people.bu.edu/papon/" target="_blank">Tarikul Islam Papon</a>   <a href="mailto:papon@bu.edu?subject=[CS460]"><i class="fa fa-envelope"></i></a>, &nbsp; 
+                <a href="https://subhadeepsarkar.bitbucket.io/" target="_blank">Subhadeep Sarkar</a>   <a href="mailto:ssarkar1@bu.edu?subject=[CS460]"><i class="fa fa-envelope"></i></a> &nbsp;
+                <!-- <a href="https://cs-people.bu.edu/ndhuynh/" target="_blank">Andy Huynh</a>   <a href="mailto:ndhyunh@bu.edu?subject=[CS460]"><i class="fa fa-envelope"></i></a> -->
+                <br>
+                <br> TFs' OH Details: Check on <a href="https://piazza.com/class/ksp86flc8ck3ie?cid=7" target="_blank">Piazza</a>
+                <br>
+                Discussions on: <a href="https://piazza.com/bu/fall2021/cs460" target="_blank">Piazza</a>
+                / <a href="https://docs.google.com/document/d/1l6Znqv728FKdDJBfdq4sVS5LGgC4jf3m1YyZ293AkSw/edit?usp=sharing" target="_blank">Notes</a>
+                / <a href="https://www.gradescope.com/courses/296086" target="_blank">Gradescope</a>
+                </p>
+			</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="alternate main-content" id="announcements">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <h1 class="text-center">Announcements</h1>
+            </div>
+        </div>            
+        <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 post-title">
+                <ul>
+<!--                     <li> The third <a style="text-decoration: underline;" href="project.html">Programming Assignment is available</a>! <font color="red">(NEW)</font></li>
+
+                    <li> The fourth <a style="text-decoration: underline;" href="project.html">Written Assignment is available</a>! <font color="red">(NEW)</font></li>
+
+                    <li> The second <a style="text-decoration: underline;" href="project.html">Programming Assignment is available</a>!
+
+                    <li> The third <a style="text-decoration: underline;" href="project.html">Written Assignment is available</a>!
+
+                    <li> We will have a <a style="text-decoration: underline;" href="#guest-lecture-pantela">guest lecture on Novermber 18th from Stella Pantella</a>, from Vertica, Microfocus.</li>
+
+                    <li> The second <a style="text-decoration: underline;" href="project.html">Written Assignment is available</a>! 
+
+                    <li> The first <a style="text-decoration: underline;" href="project.html">Programming Assignment is available</a>! 
+
+                    <li> The first <a style="text-decoration: underline;" href="project.html">Written Assignment is available</a></li>
+
+                    <li> Lab A4 moved to FCB 104.</li>
+
+                    <li> Dimitris Staratzis will be the TF of the class.</li>
+                    
+
+
+
+                    <li> First lab session will take place on 9/10.</li> -->
+
+                    <!-- <li><strong>Dec 1st</strong>: <a href="./projects/PA3.pdf" target="_blank">Programming Assignment 3</a> is now out! <font color="red">(BONUS! due 12/11)</font></li>
+                    <li><strong>Nov 25th</strong>: <a href="./assignments/WA7.pdf" target="_blank">Written Assignment 7</a> is now out! <font color="red">(due 12/6)</font></li>
+                    <li><strong>Nov 25th</strong>: PA3 (not yet available) will be bonus with a deadline on <font color="red">12/11</font></li>
+
+                    <li><strong>Nov 25th</strong>: PA2 deadline extended to <font color="red">12/1</font></li>
+
+                    <li><strong>Nov 12th</strong>: <a href="./assignments/WA6.pdf" target="_blank">Written Assignment 6</a> is now out! </li>
+                    <li><strong>Nov 10th</strong>: <a href="./projects/PA2.pdf" target="_blank">Programming Assignment 2</a> is now out! <font color="red">(due <strike>11/28</strike> 12/1)</font></li>
+                    
+                    <li><strong>Oct 30st</strong>: <a href="./assignments/WA5.pdf" target="_blank">Written Assignment 5</a> is now out! </li>
+                    <li><strong>Oct 23th</strong>: <a href="./projects/PA1_3.pdf" target="_blank">Programming Assignment 1.3</a> is now out! </li>
+
+                    <li><strong>Oct 12th</strong>: <a href="./assignments/WA4.pdf" target="_blank">Written Assignment 4</a> is now out! </li>
+                    
+                    <li><strong>Oct 1st</strong>: <a href="./assignments/WA3.pdf" target="_blank">Written Assignment 3</a> is now out! (due 10/11)</li>
+
+                    <li><strong>Sep 22th</strong>: <a href="./projects/PA1_2.pdf" target="_blank">Programming Assignment 1.2</a> is now out! </li>
+
+                    <li><strong>Sep 22th</strong>: <a href="./assignments/WA2.pdf" target="_blank">Written Assignment 2</a> is now out! (due 10/04)</li>
+
+                    <li><strong>Sep 15th</strong>: <a href="./assignments/WA1.pdf" target="_blank">Written Assignment 1</a> is now out! (due 09/27)</li>
+
+                    <li><strong>Sep 8th</strong>: <a href="./projects/PA1_1.pdf" target="_blank">Programming Assignment 1.1</a> is now out! (due 09/24)</li>
+
+                    <li><strong>Sep 1st</strong>: The <a href="https://piazza.com/class/ke4bdqqqrnl5hp?cid=8" target="_blank">Zoom link for lectures and labs</a> is now available.</li> -->
+                    <li><strong>Nov 10th</strong>: WA7 Posted. Due date: Dec 5</li>
+                    <li><strong>Nov 19th</strong>: PA2.2 Posted. Due date: Dec 7</li>
+                    <li><strong>Nov 10th</strong>: WA6 Posted. Due date: Nov 23</li>
+                    <li><strong>Nov 11th</strong>: PA2.1 Posted. Due date: Nov 30</li>
+                    <li><strong>Nov 10th</strong>: WA5.b Posted. Due date: Nov 17</li>
+                    <li><strong>Oct 12th</strong>: PA1.3 Posted. Due date: Nov 05</li>
+                    <li><strong>Oct 12th</strong>: WA5 Posted. Due date: Oct 18</li>
+                    <li><strong>Oct 5th</strong>: WA4 Posted. Due date: Oct 11</li>
+                    <li><strong>Sep 29th</strong>: PA1.2 Posted. Due date: Oct 14 </li>
+                    <li><strong>Sep 28th</strong>: WA3 Posted. Due date: Oct 4 </li>
+                    <li><strong>Sep 20th</strong>: WA2 Posted. Due date: Sep 27 </li>
+                    <li><strong>Sep 14th</strong>: PA1.1 Posted. Due date: Sep 28 </li>
+                    <li><strong>Sep 11th</strong>: WA1 Posted. Due date: Sep 19</li>
+                    <li> <strong>Aug 25th</strong>: Class starts on 9/2!</li>
+                </ul>
+                <br>
+                <br>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="main-content" id="schedule">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+            	<h1 class="text-center">Class Schedule</h1>
+
+                <p>
+                Here you can find the <em><strong>tentative</strong></em> schedule of the class (which might change as the semester progresses). The textbook we use is also referred to as the "<a href="http://pages.cs.wisc.edu/~dbbook/" target="_blank">cow book</a>" (see more details in the <a href="syllabus.html">syllabus</a>).
+                </p>
+                <p>
+                The slides will be uploaded here after each class, but they <em>cannot</em> be used as a replacement of the lectures, and will <em>not</em> be sufficient on their own. Some lectures might deviate from the textbook (in presentation, order, and content). Hence, attendance during the lecturing and during the class discussion is <em>mandatory</em> and an integral part of the class.
+                </p>
+
+                <div class="row class-entry content-desktop">
+                    <div class="col-lg-2 post-preview">
+                        <strong>Class Details</strong>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <strong>Info</strong>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <strong>Readings</strong>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Introduction</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In our first class we introduce the concept of database systems, which store data and offer a declarative interface to access the data. We introduce the basic building blocks of database systems that are used to offer the expressive and efficient declarative interface to the data, and we discuss the aspects of everyday life, business operation, and scientific discovery for which database systems play a crucial role. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class01.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 1</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Database Systems Architectures</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we discuss the fundamental components that comprise a database system. We will see the commonalities and the differences of the main database system architectures and we will discuss why we have several different ones. We will go over the key characteristics of relational systems (row-stores and column-stores), and we will introduce different designs like key-value stores and graph stores. Finally, we will introduce the class projects and we will discuss in detail course logistics. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class02.pdf">Slides</a></li>
+                            <li>"<a href="https://stratos.seas.harvard.edu/files/stratos/files/columnstoresfntdbs.pdf">The Design and Implementation of Modern Column-Oriented Database Systems</a>", Chapters 1, 2, 3</li>
+                            <li>"<a href="https://dsf.berkeley.edu/papers/fntdb07-architecture.pdf">Architecture of a Database System</a>",Chapter 1</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>ER Model</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we discuss the process of conceptually design our database. We will discuss how we can take specific requirements and transform them to a conceptual database schema using the Entity-Relationship Model (ER-Model). We will cover this process with examples. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class03.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 2</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Relational Model</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we introduce the Relational Model, the most widely used model by vendors, institutions, and organizations to represent and store data. We connect this discussion with ER Model and we show how to build the relational model of an application when starting from the ER Model. This serves as a first get-to-know to SQL focusing on the DDL commands. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class04.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 3</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Relational Algebra</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we introduce Relational Algebra, a query language used to express the implementation of queries. Relational Algebra is applied directly on relational data and can describe multiple ways of implementing the same "logical" query. We discuss the fundamental operations, their properties and the operations we can define using them (compound operations). </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class05.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 4.1, 4.2</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Functional Dependencies</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we introduce redundancy as one of the main problems in a relational schema. We introduce Functional Dependencies (FD) as generalized keys in order to help us identify a bad schema. We discuss how to reason for FD. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class06.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 19.1-19.3</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Decomposition &amp; Schema Normalization</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we use functional dependencies to identify bad schemata and to propose how to decompose relations to avoid problems from redundancy. We further discuss how to get good decompositions, that is, having lossless-joins and being (functional) dependency preserving. We discuss several normal forms that we can achieve with a varying degree of "how much" we decompose. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class07.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 19.4-19.7</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>SQL I</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we first introduce the basic constructs of an SQL query and then we continue thoroughly over several examples for SQL queries, slowly building increasingly complex queries. We discuss the basic SQL query, union-compatible operations, nested queries, aggregate operators, and the GROUP BY and HAVING keywords. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class08.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 5.1-5.5</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>SQL II</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">Continued from previous class. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class09.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 5.1-5.5</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>File Organization &amp; Introduction to Indexing</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we introduce the main concepts needs to start working with the internals of database systems. We lay the groundwork needed for the memory hierarchy, file organization, page organization, and indexing. </p>
+                    </div>  
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class10.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 8 &amp; 9.1, 9.5-9.7</li>
+                            <li>"<a href="https://link.springer.com/article/10.1007%2Fs00778-002-0074-9">Data page layouts for relational databases on deep memory hierarchies</a>", The VLDB Journal, 2002 (Sections 1, 2, 3, 4)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Storage Layer</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we dive into the details of the storage hierarchy. We discuss in detail the tradeoffs between different levels of the hierarchy. We provide details for the internals of hard disks and flash disks. We further discuss the specifics of buffer management and, specifically, of buffer replacement policies. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class11.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 9.1-9.4</li>
+                            <li>"<a href="https://www.usenix.org/legacy/events/fast05/tech/schlosser/schlosser.pdf">On Multidimensional Data and Modern Disks</a>", FAST 2005 (Sections 1, 2, 3, 4)</li>
+                            <li>"<a href="https://www.usenix.org/legacy/events/usenix08/tech/full_papers/agrawal/agrawal_html/index.html">Design Tradeoffs for SSD Performance</a>", USENIX ATC 2008 (Sections 1, 2, 3)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Indexing with B+ Trees</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we dive into the details of indexing. We discuss in detail the internals of the most popular tree index in database management systems, the B+ Tree. We describe the search algorithm, the insert algorithm, and the delete algorithm. We further discuss aspects of key compression and bulk loading, two important performance optimizations. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class12.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 10.1, 10.3-10.8</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Hash-Based Indexing</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we discuss the different approaches for hash-based indexing. We first introduce static hashing, which has the problem of long chains of overflow pages. Then we discuss two different ways to address this problem with dynamic hashing: extendible hashing which used a directory and has no chains, and
+                            linear hashing which uses multiple different hash functions and allows overflows pages which are split (and re-hashed frequently). </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class13.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 11</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Midterm</h3>
+                        <!-- <strong></strong> -->
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">You can bring with you <strong>one pages (one sheet one side) of any notes</strong> you want. No more material will be available. No laptops, tablets or phones are allowed. 
+                        Please come 2-3 minutes prior to the top of the hour to start sharp at 2pm.</p>
+                        <!-- <p class="post-content">Details to follow. </p> -->
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <!-- <li></li> -->
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>External Sorting</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we discuss the problem of sorting in the context of database systems. Sorting is a virtually ubiquitous operation in data management, and frequently we have to sort data that do not fit in memory. To that end external sorting algorithms are developed (that minimize number of disk accesses as opposed to number of comparisons). We discuss different sorting paradigms including external sorting and sorting with B+ Trees. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class15.pdf">Slides</a></li>
+                            <!-- <li><a tabindex="-1" href="./rev_exercises/Review-Ex-Sorting.pdf">Exercises</a></li> -->
+                            <li>Textbook, Chapter 13</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Log-Structured Merge Trees</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we introduce an alternative indexing and storage organization named 
+                            Log-Structured Merge Trees (LSM-Trees). 
+                            We discuss in detail the internals of LSM-Trees. We describe the ingestion and the search routines, as well as, how to update and delete. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class16.pdf">Slides</a></li>
+                            <li>"<a href="https://dl.acm.org/citation.cfm?id=3276980">Optimal Bloom Filters and Adaptive Merging for LSM-Trees</a>", ACM TODS 2018 (Sections 1, 2, 3)</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Query Processing with Relational Operators</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we discuss the implementation of relational operators. We start by discussing the implementations of selections and projections. And then we will continue discussing the implementations of joins: nested loop joins, sort-merge joins, and hash joins. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class17.pdf">Slides (for Classes 17-19)</a></li>
+                            <li>"<a href="https://web.archive.org/web/20070718223542/http://www.noncombatant.org/trove/fitzpatrick-anecdotes.pdf">More on the Halloween Problem</a>"</li>
+                            <li>Textbook, Chapter 12 &amp; 14.1-14.3</li>
+                        </ul>
+                    </div>
+                </div>
+
+            
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Joins I: Nested-Loop &amp; Sort-Merge Joins</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we continue the discussion about the implementation of relational operators. In particular we discuss Nested Loop Joins and Sort-Merge Joins. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class18-notes.pdf">Notes</a></li> 
+                            <li>Textbook, Chapter 14.4.1-14.4.2</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Joins II: Hash Joins &amp; Remaining Relational Operators</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we continue the discussion about the implementation of relational operators. In particular we discuss Hash Joins, General Joins, Union/Intersection, and Aggregates.  </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class19-notes.pdf">Notes</a></li> 
+                            <li>Textbook, Chapter 14.4.3-14.4.4, 14.6-14.7</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Query Optimization</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we put together all the knowledge about the SQL operators evaluation costs in order to understand how to choose how to implement a whole SQL query. We discuss the basic properties needed for query rewriting, pruning the decision search space, and the interesting orders. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class20.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 15</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Query Optimization - Part II</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content"> Continued from previous class. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="">Slides of part II with annotations</a></li>
+                             <li>Textbook, Chapter 15</li> 
+                        </ul>
+                    </div>
+                </div> -->
+
+
+
+
+                <!-- <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class 22</h3>
+                        <strong>Guest Lecture </strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">TBA. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                        </ul>
+                    </div>
+                </div> -->
+
+                
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Overview of Transaction Management</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we present an overview of the transactional part of a database system. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class21.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 16</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Concurrency Control</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we discuss in detail how Concurrency Control can achieve Consistency and Isolation. We discuss two-phase locking (2PL), serializability, recoverability, and deadlocks. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class22.pdf">Slides (for Classes 22-23)</a></li>
+                            <li>Textbook, Chapter 17.1-17.5</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Concurrency Control (cont'd)</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">Continued from previous class. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <!-- <li><a tabindex="-1" href="./slides/CS460-Fall2019-Class24.pdf">Slides (for Classes 24-25)</a></li> -->
+                            <li>Textbook, Chapter 17.1-17.5</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Recovery</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In this class we discuss in detail how the system can achieve Atomicity and Durability, and also ensure crash recovery. We cover in detail the Write-Ahead Logging (WAL) protocol. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class24.pdf">Slides</a></li>
+                            <li>Textbook, Chapter 18</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Recovery (contd.)</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">Continued from previous class. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <!-- <li><a tabindex="-1" href="">Notes</a></li> -->
+                            <li>Textbook, Chapter 18</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>NoSQL Systems and Topics in Databases</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">In the last class of the semester we will discuss about NoSQL systems and  active research directions in data management, and current opportunities and needs in the data management industry. </p>
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                            <li><a tabindex="-1" href="./slides/CS460-Fall2021-Class26.pdf">Slides</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                
+                <div class="row class-entry">
+                    <script type="text/javascript">document.write("<a id=\"class"+(cday+1)+"\"></a>"); </script>
+                    <div class="col-lg-2 post-preview">
+                        <h3 class="post-subtitle">Class <script type="text/javascript">document.write(cday+1)</script></h3>
+                        <strong>Review</strong>
+                        <p class="post-meta"><script type="text/javascript"> document.write(classDay(cday));cday++;</script></p>
+                    </div>
+                    <div class="col-lg-7 post-preview">
+                        <p class="post-content">This is a review class. We will go over open questions on previous subjects and also discuss subtle details on exercises and written assignments.</p>
+                        
+                    </div>
+                    <div class="col-lg-3 post-preview">
+                        <ul>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="post-preview">
+
+
+
+
+
+                    <br>
+                    <br>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<!-- 
+    <hr> -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <!--   <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul> -->
+                    <p class="copyright text-muted">Copyright &copy; DiSC lab 2020</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+    <!-- Start of StatCounter Code for Default Guide -->
+    <script type="text/javascript">
+    var sc_project=11287352; 
+    var sc_invisible=1; 
+    var sc_security="41f1ccc3"; 
+    var scJsHost = (("https:" == document.location.protocol) ?
+    "https://secure." : "http://www.");
+    document.write("<sc"+"ript type='text/javascript' src='" +
+    scJsHost+
+    "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript><div class="statcounter"><a title="real time web
+    analytics" href="http://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="//c.statcounter.com/11287352/0/41f1ccc3/1/" alt="real
+    time web analytics"></a></div></noscript>
+    <!-- End of StatCounter Code for Default Guide -->
+
+</body>
+
+</html>
