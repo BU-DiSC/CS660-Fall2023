@@ -36,15 +36,14 @@
 
   <script type="text/javascript"> 
       function classDay(d){ 
-        // var dates = ["January 23","January 25","January 30","February 1","February 6","February 8","February 13","February 15","February 22","February 23 (Thursday)","February 27","March 1","March 6","March 8","March 13","March 15","March 27","March 29","April 3","April 5","April 10","April 12","April 19","April 24","April 26","May 1"]                
-                
-        var dates = ["September 2","September 7","September 9","September 14","September 16","September 21","September 23","September 28","September 30","October 5","October 7","October 14","October 19","October 21","October 26","October 28","November 2","November 4","November 9","November 11","November 16","November 18","November 23","November 30","December 2","December 7","December 9"]
-        if (d>=0 && d<28)
-          return dates[d];
-        else 
-          return "TBA";
-       } 
-       var cday=0;
+        var dates = ["September 5", "September 7", "September 12", "September 14", "September 19", "September 21", "September 26", "September 28", "October 3", "October 5", "October 12", "October 17", "October 19", "October 24", "October 26", "October 31", "November 2", "November 7", "November 9", "November 14", "November 16", "November 21", "November 28", "November 30", "December 5", "December 7", "December 12"]
+        if (d >= 0 && d < dates.length) {
+		      return dates[d];
+	      } else {
+		      return "TBA";
+	      }
+      }
+      var cday=0;
     </script>
 
 </head>
