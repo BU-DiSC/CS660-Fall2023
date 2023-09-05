@@ -34,7 +34,7 @@
 }*/
 
 .post-subtitle {
-  margin-top: 10px !important;
+  margin-top: 2px !important;
   margin-bottom: 0px !important;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .post-preview li {
-  font-size: 14px !important;
+  font-size: 16px !important;
   padding-left: 0px !important;
 }
 
@@ -192,7 +192,7 @@ background: #E0E0E0;
 
 .post-preview > .post-meta {
   color: #777777;
-  font-size: 18px;
+  font-size: 14px;
   font-style: italic;
   margin-top: 0;
   margin-bottom: 0;   
