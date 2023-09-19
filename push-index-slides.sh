@@ -7,7 +7,7 @@ if [ $? -ne 0 ]; then
     exit
 fi
 
-git add index.html && git commit -m "CS460: add slides in html"
+git add index.html && git commit -m "CS660: add slides in html"
 if [ $? -ne 0 ]; then
     echo "Could not commit the minor change. Please check whether your repository tree is consistent. Existing!"
     exit
