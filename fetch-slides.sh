@@ -3,6 +3,11 @@
 set -x
 cp  ../../Dropbox/Professional/Professorship/0_CLASSES/CS660-Fall2023/Slides-PDF/CS660-Fall2023-Class*.pdf slides/
 
+if [ $# -ne 0 ]; then
+    echo "Only copying, no pushing."
+    exit
+fi
+
 git pull
 
 if [ $? -ne 0 ]; then
