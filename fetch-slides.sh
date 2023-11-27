@@ -1,7 +1,8 @@
 #!/bin/bash
 
 set -x
-cp  ../../Dropbox/Professional/Professorship/0_CLASSES/CS660-Fall2023/Slides-PDF/CS660-Fall2023-Class*.pdf slides/
+#cp  ../../Dropbox/Professional/Professorship/0_CLASSES/CS660-Fall2023/Slides-PDF/CS660-Fall2023-Class*.pdf slides/
+cp  ~/Repos/cs460-660-materials/_cs660-slides-pdf/*.pdf slides/
 
 if [ $# -ne 0 ]; then
     echo "Only copying, no pushing."
